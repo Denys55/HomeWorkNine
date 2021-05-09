@@ -6,7 +6,7 @@ import static java.lang.System.*;
 
 public class ExampleThree {
     public static void main(String[] args) {
-        File file = new File("/Users/deniscerep/Documents/GoIT/HomeWorkNine/src/word.txt");
+        File file = new File("src/resources/word.txt");
         if (!file.exists()) {
             throw new RuntimeException("File with name " + file.getName() + " not exsist");
         }
@@ -31,9 +31,16 @@ public class ExampleThree {
 
         Map<String, Integer> result = countRepetitions(replace);
 
+        result.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+
+        /*
         result.entrySet().forEach(entry -> {
             System.out.println(entry.getKey() + " " + entry.getValue());
         });
+
+         */
 
     }
 
